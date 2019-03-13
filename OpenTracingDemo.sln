@@ -1,0 +1,29 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTracingDemo", "OpenTracingDemo\OpenTracingDemo.csproj", "{172B4C75-2F85-4458-9148-3ED09A0DB231}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTracingDemo.Common", "OpenTracingDemo.Common\OpenTracingDemo.Common.csproj", "{97BD3E40-27BD-4FD9-B945-81D0D576C194}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTracingDemo.Server", "OpenTracingDemo.Server\OpenTracingDemo.Server.csproj", "{91AB5757-F45F-40AF-8BF0-EBEC6904C135}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{172B4C75-2F85-4458-9148-3ED09A0DB231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{172B4C75-2F85-4458-9148-3ED09A0DB231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{172B4C75-2F85-4458-9148-3ED09A0DB231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{172B4C75-2F85-4458-9148-3ED09A0DB231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97BD3E40-27BD-4FD9-B945-81D0D576C194}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97BD3E40-27BD-4FD9-B945-81D0D576C194}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97BD3E40-27BD-4FD9-B945-81D0D576C194}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97BD3E40-27BD-4FD9-B945-81D0D576C194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91AB5757-F45F-40AF-8BF0-EBEC6904C135}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91AB5757-F45F-40AF-8BF0-EBEC6904C135}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91AB5757-F45F-40AF-8BF0-EBEC6904C135}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91AB5757-F45F-40AF-8BF0-EBEC6904C135}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

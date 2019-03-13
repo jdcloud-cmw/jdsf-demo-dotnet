@@ -1,0 +1,9 @@
+/Users/lishijun1/Documents/cshapworkspace/OpenTracingDemo/OpenTracingDemo.Common/obj/Debug/netcoreapp2.2/OpenTracingDemo.Common.csprojAssemblyReference.cache
+/Users/lishijun1/Documents/cshapworkspace/OpenTracingDemo/OpenTracingDemo.Common/obj/Debug/netcoreapp2.2/OpenTracingDemo.Common.csproj.CoreCompileInputs.cache
+/Users/lishijun1/Documents/cshapworkspace/OpenTracingDemo/OpenTracingDemo.Common/obj/Debug/netcoreapp2.2/OpenTracingDemo.Common.AssemblyInfoInputs.cache
+/Users/lishijun1/Documents/cshapworkspace/OpenTracingDemo/OpenTracingDemo.Common/obj/Debug/netcoreapp2.2/OpenTracingDemo.Common.AssemblyInfo.cs
+/Users/lishijun1/Documents/cshapworkspace/OpenTracingDemo/OpenTracingDemo.Common/bin/Debug/netcoreapp2.2/OpenTracingDemo.Common.deps.json
+/Users/lishijun1/Documents/cshapworkspace/OpenTracingDemo/OpenTracingDemo.Common/bin/Debug/netcoreapp2.2/OpenTracingDemo.Common.dll
+/Users/lishijun1/Documents/cshapworkspace/OpenTracingDemo/OpenTracingDemo.Common/bin/Debug/netcoreapp2.2/OpenTracingDemo.Common.pdb
+/Users/lishijun1/Documents/cshapworkspace/OpenTracingDemo/OpenTracingDemo.Common/obj/Debug/netcoreapp2.2/OpenTracingDemo.Common.dll
+/Users/lishijun1/Documents/cshapworkspace/OpenTracingDemo/OpenTracingDemo.Common/obj/Debug/netcoreapp2.2/OpenTracingDemo.Common.pdb
