@@ -61,7 +61,7 @@ image 为说明文档的引用的图片
     {
         ServiceName = "db-service", // 当前服务的名称
         IpAddress = "10.12.140.173", // 服务要注册在注册中心的IP地址
-        Port = 5002, // 服务要注册在注册中心的端口号
+        Port = 5002,       // 服务要注册在注册中心的端口号
         InstanceId = "db-service-1", // 服务要注册在注册中心的实例id
         PreferIpAddress = true // 是否使用皮注册
     });
