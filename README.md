@@ -80,13 +80,13 @@ image 为说明文档的引用的图片
 
 * 在创建注册中心列表页面点击集群信息，在`节点信息`部分获取注册中心节点地址，如下图所示: ![注册中心详情](./image/registrydetail.jpg "注册中心详情")
 
-* 将获取的注册中心节点地址配置在 demo 的配置文件中的  `consul`->`address` 配置项，jdsf-demo-client 和 jdsf-demo-server 都需要配置
+* 将获取的注册中心节点地址配置在 demo 的StartUp文件中的  `ConsulHost` 配置项，jdsf-demo-client 和 jdsf-demo-server 都需要配置
 
 ### STEP4：配置调用链的服务地址
 
-* 在调用链分析服务列表页面中，点击创建的服务名称，进入详细信息页面，在`调用链地址`详情处获取Http协议地址，如下图所示：![调用链分析服务详情](./image/tracedetail.png "调用链分析服务详情")
+* 在调用链分析服务列表页面中，点击创建的服务名称，进入详细信息页面，在`调用链地址`详情处获取Thrift协议地址，如下图所示：![调用链分析服务详情](./image/tracedetail.png "调用链分析服务详情")
 
-* 将获取的Http协议地址配置在demo 的配置文件中的  `trace`->`traceHttpAddress` 配置项，jdsf-demo-client 和 jdsf-demo-server 都需要配置
+* 需要在京东云的云主机上启动Jaeger Agent 然后配置上面获取到的Thrift协议请求地址
 
 ### STEP5：获取项目的相关依赖编译和运行源代码
 
