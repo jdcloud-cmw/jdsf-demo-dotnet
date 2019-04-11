@@ -50,7 +50,7 @@ image 为说明文档的引用的图片
 
   ```csharp
     services.AddJaeger(new OpenTracingOptions { Sampler = new ConstSampler(true), SenderType = SenderType.UDPSender }); //添加 jaeger 配置信息，可以配置调用的地址 详细查看OpenTracingDemo.Common/ServiceCollectionExtensions/JaegerServiceCollectionExtensions 中的初始化Jaeger 代码
-    services.AddOpenTracing(); // 开启OpenTracing 链路跟踪
+    services.AddOpenTracing();  // 开启OpenTracing 链路跟踪
 
     services.AddServiceRegistry(new ConsulConfigOption
     {
