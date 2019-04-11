@@ -15,8 +15,8 @@
 |- OpenTracingDemo  
 |- OpenTracingDemo.Common  
 |- OpenTracingDemo.Server  
-|- OpenTracingDemo.sln
-|- image
+|- OpenTracingDemo.sln  
+|- image  
 其中 OpenTracingDemo.Server 是服务的生产者  
 OpenTracingDemo 为服务的消费者  
 OpenTracingDemo.Common 为 asp dotnet Core 通用类库，主要实现了负载、调用链、和注册中心响应的功能  
