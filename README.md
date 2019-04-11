@@ -1,5 +1,9 @@
 # JDSF DotNet Core Demo
 
+## 项目说明
+
+* 本项目为JDSF DotNet Core Demo 项目，主要介绍了用户通过使用京东云JDSF产品如何构建一个简单的分布式服务应用。
+
 ## 环境准备
 
 * 项目使用 dotnet core 2.2 版本进行编写，在运行时需要安装 dotnet core 2.2 的SDK
@@ -12,11 +16,12 @@
 |- OpenTracingDemo.Common  
 |- OpenTracingDemo.Server  
 |- OpenTracingDemo.sln
-
+|- image
 其中 OpenTracingDemo.Server 是服务的生产者  
 OpenTracingDemo 为服务的消费者  
 OpenTracingDemo.Common 为 asp dotnet Core 通用类库，主要实现了负载、调用链、和注册中心响应的功能  
-OpenTracingDemo.sln 为项目的解决方案
+OpenTracingDemo.sln 为项目的解决方案  
+image 为说明文档的引用的图片
 
 ## 项目依赖类库说明
 
@@ -61,9 +66,29 @@ OpenTracingDemo.sln 为项目的解决方案
     });
   ```
 
-## 代码运行与调试
+## 代码运行及调试
 
-* 配置上面的配置文件，启动Consul 和 Jaeger 确认服务没有问题
+### STEP1：在京东云上 [开通](https://www.jdcloud.com/cn/public/testApply/jdsf) 京东云分布式服务框架产品的使用权限
+
+* 当前产品处于公测状态，免费使用。公测版本即是正式稳定的服务版本，用户不必担心稳定性与安全性问题，请放心试用。公测期结束后，产品将按实例的规格付费，并且用户不必重新开通新服务或切换服务
+
+### STEP2：创建注册中心、创建调用链服务
+
+* 创建流程参考 [京东云分布式服务框架产品文档](https://docs.jdcloud.com/cn/jd-distributed-service-framework/product-overview)
+
+### STEP3：在配置文件配置注册中心地址
+
+* 在创建注册中心列表页面点击集群信息，在`节点信息`部分获取注册中心节点地址，如下图所示: ![注册中心详情](./image/registrydetail.jpg "注册中心详情")
+
+* 将获取的注册中心节点地址配置在 demo 的配置文件中的  `consul`->`address` 配置项，jdsf-demo-client 和 jdsf-demo-server 都需要配置
+
+### STEP4：配置调用链的服务地址
+
+* 在调用链分析服务列表页面中，点击创建的服务名称，进入详细信息页面，在`调用链地址`详情处获取Http协议地址，如下图所示：![调用链分析服务详情](./image/tracedetail.png "调用链分析服务详情")
+
+* 将获取的Http协议地址配置在demo 的配置文件中的  `trace`->`traceHttpAddress` 配置项，jdsf-demo-client 和 jdsf-demo-server 都需要配置
+
+### STEP5：获取项目的相关依赖编译和运行源代码
 
 * 如果在 windows 、linux 或者 mac 环境下 可以在安装dotnet core 2.2 版本的SDK后，在OpenTracingDemo.Server 文件夹下开启命令行、 bash shell或者 powershell 执行
 
@@ -72,4 +97,8 @@ OpenTracingDemo.sln 为项目的解决方案
     dotnet run
   ```
 
-    启动生产者，然后使用相同的命令在文件夹OpenTracingDemo 下执行启动消费者，然后访问URL `http://<host>:<port>/api/refit/gameInfo?gameId=111` 这样的链接，查看请求结果，在此过程中可以调试查看详细的代码调用逻辑
+* 然后使用相同的命令在文件夹OpenTracingDemo 下启动消费者
+
+### STEP6：验证部署结果
+
+* 访问URL `http://<host>:<port>/api/refit/gameInfo?gameId=111`（gameId 的值可自定义），查看请求结果。在调用链分析服务页中的`依赖图谱` 中，您将可以看到响应的调用依赖信息，具体的操作请参考[京东云分布式服务框架产品文档](https://docs.jdcloud.com/cn/jd-distributed-service-framework/product-overview)
