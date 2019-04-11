@@ -12,15 +12,15 @@
   
 ## 项目结构
 
-|- OpenTracingDemo  
-|- OpenTracingDemo.Common  
-|- OpenTracingDemo.Server  
-|- OpenTracingDemo.sln  
+|- JDSF.Demo.Client  
+|- JDSF.Common  
+|- JDSF.Demo.Server  
+|- JDSFDemo.sln  
 |- image  
-其中 OpenTracingDemo.Server 是服务的生产者  
-OpenTracingDemo 为服务的消费者  
-OpenTracingDemo.Common 为 asp dotnet Core 通用类库，主要实现了负载、调用链、和注册中心响应的功能  
-OpenTracingDemo.sln 为项目的解决方案  
+其中 JDSF.Demo.Server  是服务的生产者  
+JDSF.Demo.Client   为服务的消费者  
+JDSF.Common 为 asp dotnet Core 通用类库，主要实现了负载、调用链、和注册中心响应的功能  
+JDSFDemo.sln 为项目的解决方案  
 image 为说明文档的引用的图片
 
 ## 项目依赖类库说明
@@ -43,6 +43,7 @@ image 为说明文档的引用的图片
         "Port": 5002
     }
   ```
+  
 * 此项目默认需要在本机启动 jaeger agent，如果需要进行修改 jaeger 相关配置请查看下面的说明。
 
 * 在代码中需要配置应用的名称以及调用链采集服务的地址和端口 等信息，具体代码需要在`StartUp.cs` 中，详细代码如下
@@ -80,7 +81,7 @@ image 为说明文档的引用的图片
 
 * 在创建注册中心列表页面点击集群信息，在`节点信息`部分获取注册中心节点地址，如下图所示: ![注册中心详情](./image/registrydetail.jpg "注册中心详情")
 
-* 将获取的注册中心节点地址配置在 demo 的StartUp文件中的  `ConsulHost` 配置项，jdsf-demo-client 和 jdsf-demo-server 都需要配置
+* 将获取的注册中心节点地址配置在 demo 的StartUp文件中的  `ConsulHost` 配置项，JDSF.Demo.Client和 JDSF.Demo.Server 都需要配置
 
 ### STEP4：配置调用链的服务地址
 
@@ -90,15 +91,21 @@ image 为说明文档的引用的图片
 
 ### STEP5：获取项目的相关依赖编译和运行源代码
 
-* 如果在 windows 、linux 或者 mac 环境下 可以在安装dotnet core 2.2 版本的SDK后，在OpenTracingDemo.Server 文件夹下开启命令行、 bash shell或者 powershell 执行
+* 如果在 windows 、linux 或者 mac 环境下 可以在安装dotnet core 2.2 版本的SDK后，在JDSF.Demo.Server 文件夹下开启命令行、 bash shell或者 powershell 执行
 
   ```powershell
     dotnet restore
     dotnet run
   ```
 
-* 然后使用相同的命令在文件夹OpenTracingDemo 下启动消费者
+* 然后使用相同的命令在文件夹JDSF.Demo.Client 下启动消费者
 
 ### STEP6：验证部署结果
 
 * 访问URL `http://<host>:<port>/api/refit/gameInfo?gameId=111`（gameId 的值可自定义），查看请求结果。在调用链分析服务页中的`依赖图谱` 中，您将可以看到响应的调用依赖信息，具体的操作请参考[京东云分布式服务框架产品文档](https://docs.jdcloud.com/cn/jd-distributed-service-framework/product-overview)
+
+
+|产品线|版本|更新内容|说明|  
+|---|---|---|---|
+|mps|0.4.1|增加图片样式分隔符接口|增加图片样式分隔符接口|  
+ 
