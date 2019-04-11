@@ -55,7 +55,7 @@ image 为说明文档的引用的图片
     services.AddServiceRegistry(new ConsulConfigOption
     {
         ConsulHost = "10.12.209.43", // consul 注册中心地址
-        ConsulPort = 8500, // consul 注册中心端口号
+        ConsulPort = 8500,           // consul 注册中心端口号
         ConsulSchame = "http" // consul 注册中心使用的协议
     }, new DiscoverOption
     {
