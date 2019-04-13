@@ -8,6 +8,8 @@
     <Folder Include="ServiceCollectionExtensions\" />
     <Folder Include="ServiceRegistry\" />
     <Folder Include="LoadBalance\" />
+    <Folder Include="Util\" />
+    <Folder Include="Config\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Class1.cs" />
