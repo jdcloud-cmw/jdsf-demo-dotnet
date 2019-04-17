@@ -35,16 +35,7 @@ image 为说明文档的引用的图片
 
 ## 配置及使用说明
 
-* 项目在Programe 中使用了基于配置文件加载的启动 ip 和端口，如果不进行配置默认使用的地址为 http://localhost:5000 需要在 appsettings.Development.json 或者appsettings.json 配置 Server 属性，具体的配置如下：  
-
-  ```json
-   "Server": {
-        "Host": "0.0.0.0",
-        "Port": 5002
-    }
-  ```
-  
-* 此项目默认需要在本机启动 jaeger agent，如果需要进行修改 jaeger 相关配置请查看下面的说明。
+* 项目在Programe 中使用了基于配置文件加载的启动 ip 和端口，如果不进行配置默认使用的地址为 http://0.0.0.0:5000 需要在 appsettings.Development.json 或者appsettings.json 配置 `App`->`AppPort` 属性，具体的配置如下：  
 
 * 在代码中需要配置应用的名称以及调用链采集服务的地址和端口 等信息，具体代码需要在`appsettings.Development.json` 中,如果需要启动正式的环境发布，请将配置配置在`appsettings.json`，详细配置代码如下
 
@@ -74,9 +65,22 @@ image 为说明文档的引用的图片
         "TraceHttpAddress": "10.12.142.97",  //调用地址
         "TraceHttpPort": 14268         // 调用端口号
      }
-
   }
   ```
+
+## 部分代码使用说明
+
+* 关于使用 httpClient 进行负载和调用链跟踪，请看下面的代码：
+
+```csharp
+  services.AddHttpClient("LoadBalance").AddHttpMessageHandler<LoadBalanceHttpHandler>(); // 添加负载使用的HttpClientFactory LoadBalanceHttpHandler 默认已经注入对象，此Handler 实现了负载的自动判断逻辑
+
+  services.AddHttpClient("db-service", (obj) =>
+  {
+    obj.BaseAddress = new Uri("http://db-service");
+  }).AddTypedClient(c=> Refit.RestService.For<IDBService>(c))
+  .AddHttpMessageHandler<LoadBalanceHttpHandler>(); //此配置为使用了Refit 创建的服务，可以直接注入相关的接口进行调用
+```
 
 ## 代码运行及调试
 
@@ -116,9 +120,3 @@ image 为说明文档的引用的图片
 ### STEP6：验证部署结果
 
 * 访问URL `http://<host>:<port>/api/refit/gameInfo?gameId=111`（gameId 的值可自定义），查看请求结果。在调用链分析服务页中的`依赖图谱` 中，您将可以看到响应的调用依赖信息，具体的操作请参考[京东云分布式服务框架产品文档](https://docs.jdcloud.com/cn/jd-distributed-service-framework/product-overview)
-
-
-|产品线|版本|更新内容|说明|  
-|---|---|---|---|
-|mps|0.4.1|增加图片样式分隔符接口|增加图片样式分隔符接口|  
- 
