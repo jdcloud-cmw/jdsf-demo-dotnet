@@ -46,7 +46,7 @@ image 为说明文档的引用的图片
   
 * 此项目默认需要在本机启动 jaeger agent，如果需要进行修改 jaeger 相关配置请查看下面的说明。
 
-* 在代码中需要配置应用的名称以及调用链采集服务的地址和端口 等信息，具体代码需要在`appsettings.Development.json` 中，详细代码如下
+* 在代码中需要配置应用的名称以及调用链采集服务的地址和端口 等信息，具体代码需要在`appsettings.Development.json` 中,如果需要启动正式的环境发布，请将配置配置在`appsettings.json`，详细配置代码如下
 
   ```json
     "JDSFConfig": { //jdsf 配置
