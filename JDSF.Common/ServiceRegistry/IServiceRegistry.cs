@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace JDSF.Common.ServiceRegistry
 {
     public interface IServiceRegistry
@@ -6,5 +8,9 @@ namespace JDSF.Common.ServiceRegistry
         void RegistryService(DiscoverOption option);
 
         void DeRegistryService(string serviceId);
+
+        List<HealthServiceInfo> GetHealthServices(string serviceName);
+
+        void UpdateHealthService();
     }
 }

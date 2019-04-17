@@ -32,5 +32,10 @@ namespace JDSF.Common.Util
             }
             return null;
         }
+
+        public static string GetSelfHostName()
+        {
+            return Dns.GetHostName();
+        }
     }
 }

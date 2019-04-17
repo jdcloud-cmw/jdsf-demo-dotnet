@@ -21,6 +21,9 @@ namespace JDSF.Common.Test
             testOutput.WriteLine(NetworkUtil.GetHostIp());
 
             testOutput.WriteLine(NetworkUtil.GetHostIp("10.12.209.43"));
+            var hostName = NetworkUtil.GetSelfHostName();
+            testOutput.WriteLine(hostName); 
+
         }
     }
 }

@@ -1,13 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using Consul;
+using JDSF.Common.Util;
+using System.Collections.Concurrent;
 
 namespace JDSF.Common.ServiceRegistry
 {
     public class ConsulServiceRegistry:IServiceRegistry
     {
         private ConsulClient _ConsulClient;
+
+        private static ConcurrentDictionary<string,List<HealthServiceInfo>> cacheServiceInfos = new ConcurrentDictionary<string, List<HealthServiceInfo>>();
 
         public ConsulServiceRegistry(ConsulClient consulClient)
         {
@@ -27,7 +32,14 @@ namespace JDSF.Common.ServiceRegistry
             {
                 instanceId = $"{serviceName}-{option.Port}";
             }
-            agentServiceRegistration.Address = option.IpAddress;
+            if(option.PreferIpAddress)
+            {
+                agentServiceRegistration.Address = option.IpAddress;
+            }
+            else {
+                agentServiceRegistration.Address = NetworkUtil.GetSelfHostName();
+            }
+
             agentServiceRegistration.Port = option.Port;
             agentServiceRegistration.Name = serviceName;
             agentServiceRegistration.ID = instanceId;
@@ -42,6 +54,25 @@ namespace JDSF.Common.ServiceRegistry
         public void DeRegistryService(string serviceId)
         {
             _ConsulClient.Agent.ServiceDeregister(serviceId);
+        }
+
+        public List<HealthServiceInfo> GetHealthServices(string serviceName)
+        {
+            if(cacheServiceInfos.ContainsKey(serviceName))
+            { 
+                if(cacheServiceInfos[serviceName].Count>0)
+                {
+                    return cacheServiceInfos[serviceName];
+                }
+            }
+
+            //var service = _ConsulClient.Agent.(host);
+            throw new NotImplementedException();
+        }
+
+        public void UpdateHealthService()
+        {
+            throw new NotImplementedException();
         }
     }
 }
