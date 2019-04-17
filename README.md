@@ -46,25 +46,36 @@ image 为说明文档的引用的图片
   
 * 此项目默认需要在本机启动 jaeger agent，如果需要进行修改 jaeger 相关配置请查看下面的说明。
 
-* 在代码中需要配置应用的名称以及调用链采集服务的地址和端口 等信息，具体代码需要在`StartUp.cs` 中，详细代码如下
+* 在代码中需要配置应用的名称以及调用链采集服务的地址和端口 等信息，具体代码需要在`appsettings.Development.json` 中，详细代码如下
 
-  ```csharp
-    services.AddJaeger(new OpenTracingOptions { Sampler = new ConstSampler(true), SenderType = SenderType.UDPSender }); //添加 jaeger 配置信息，可以配置调用的地址 详细查看OpenTracingDemo.Common/ServiceCollectionExtensions/JaegerServiceCollectionExtensions 中的初始化Jaeger 代码
-    services.AddOpenTracing();  // 开启OpenTracing 链路跟踪
+  ```json
+    "JDSFConfig": { //jdsf 配置
+     "App":{
+       "AppName":"dotnet-demo-client", //应用名称
+       "AppPort":15000   //应用启动端口号
+     },
+     "Consul":{
+        "Address":"10.12.209.43", //注册中心地址
+        "Port":8500,              // 注册中心端口号
+        "Config":{
+          "Enable":false           // 是否启用配置中心功能（暂时 demo 没有支持此功能）
+        },
+        "Discover":{               // 服务发现配置
+          "Enable":true,           // 是否启用服务发现
+          "ServiceInstanceId":"dotnet-demo-client-1", // 服务实例 id
+          "HealthCheckUrl":"/api/health/check",     // 健康检查地址
+          "InstanceZone": "cn-north-1a",             // 当前服务所在的可用区
+          "PreferIpAddress":true                     // 使用 ip 注册 如果为 false 使用域名注册
+        }
+     },
+     "Trace":{                    // 链路追踪配置
+        "Enable":true,
+        "SimpleType":"CONST",     // 采集方法
+        "TraceHttpAddress": "10.12.142.97",  //调用地址
+        "TraceHttpPort": 14268         // 调用端口号
+     }
 
-    services.AddServiceRegistry(new ConsulConfigOption
-    {
-        ConsulHost = "10.12.209.43", // consul 注册中心地址
-        ConsulPort = 8500,           // consul 注册中心端口号
-        ConsulSchame = "http" // consul 注册中心使用的协议
-    }, new DiscoverOption
-    {
-        ServiceName = "db-service", // 当前服务的名称
-        IpAddress = "10.12.140.173", // 服务要注册在注册中心的IP地址
-        Port = 5002,       // 服务要注册在注册中心的端口号
-        InstanceId = "db-service-1", // 服务要注册在注册中心的实例id
-        PreferIpAddress = true // 是否使用皮注册
-    });
+  }
   ```
 
 ## 代码运行及调试
@@ -81,13 +92,15 @@ image 为说明文档的引用的图片
 
 * 在创建注册中心列表页面点击集群信息，在`节点信息`部分获取注册中心节点地址，如下图所示: ![注册中心详情](./image/registrydetail.jpg "注册中心详情")
 
-* 将获取的注册中心节点地址配置在 demo 的StartUp文件中的  `ConsulHost` 配置项，JDSF.Demo.Client和 JDSF.Demo.Server 都需要配置
+* 将获取的注册中心节点地址配置在 demo 的appsettings.Development.json文件中的  `Consul`->`Address` 配置项，JDSF.Demo.Client和 JDSF.Demo.Server 都需要配置
 
 ### STEP4：配置调用链的服务地址
 
 * 在调用链分析服务列表页面中，点击创建的服务名称，进入详细信息页面，在`调用链地址`详情处获取Thrift协议地址，如下图所示：![调用链分析服务详情](./image/tracedetail.png "调用链分析服务详情")
 
 * 需要在京东云的云主机上启动Jaeger Agent 然后配置上面获取到的Thrift协议请求地址
+
+* Demo 使用的协议为 Http 传输 Thrift 序列化的数据，在`调用链地址`详情处获取Http协议地址和端口号 配置在appsettings.Development.json文件中的`Trace`->`TraceHttpAddress` 和`Trace`->`TraceHttpPort`配置项，JDSF.Demo.Client和 JDSF.Demo.Server 都需要配置
 
 ### STEP5：获取项目的相关依赖编译和运行源代码
 
