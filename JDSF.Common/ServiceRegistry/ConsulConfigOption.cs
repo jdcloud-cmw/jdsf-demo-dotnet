@@ -1,5 +1,5 @@
 ﻿using System;
-namespace OpenTracingDemo.Common.ServiceRegistry
+namespace JDSF.Common.ServiceRegistry
 {
     public class ConsulConfigOption
     {
@@ -31,5 +31,7 @@ namespace OpenTracingDemo.Common.ServiceRegistry
         public string IpAddress { get; set; }
 
         public int Port { get; set; }
+
+        public string Zone { get; set; }
     }
 }

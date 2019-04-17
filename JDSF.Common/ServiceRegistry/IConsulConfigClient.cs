@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Consul;
 
-namespace OpenTracingDemo.Common.ServiceRegistry
+namespace JDSF.Common.ServiceRegistry
 {
     public interface IConsulConfigClient
     {

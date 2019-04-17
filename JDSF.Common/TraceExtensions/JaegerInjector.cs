@@ -2,7 +2,7 @@
 using Jaeger.Propagation;
 using OpenTracing.Propagation;
 
-namespace OpenTracingDemo.Common.ServiceCollectionExtensions
+namespace JDSF.Common.TraceExtensions
 {
     public class JaegerInjector<T>
     { 

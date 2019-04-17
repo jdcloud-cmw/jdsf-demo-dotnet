@@ -1,5 +1,5 @@
 ﻿using System;
-namespace OpenTracingDemo.Common.ServiceRegistry
+namespace JDSF.Common.ServiceRegistry
 {
     public interface IServiceRegistry
     {

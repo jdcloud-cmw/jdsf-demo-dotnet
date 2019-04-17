@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace OpenTracingDemo.Models
+namespace JDSF.Demo.Client.Models
 {
     public class GameInfo
     {

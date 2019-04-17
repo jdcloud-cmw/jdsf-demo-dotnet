@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using System.Linq;
 using Consul;
 using System.Text;
-using OpenTracingDemo.Common.ServiceRegistry;
+using JDSF.Common.ServiceRegistry;
 
-namespace OpenTracingDemo.Common.LoadBalance
+namespace JDSF.Common.LoadBalance
 {
     public class LoadBalanceHttpHandler : DelegatingHandler
     {

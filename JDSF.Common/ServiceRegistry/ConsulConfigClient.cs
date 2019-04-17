@@ -7,7 +7,7 @@ using System.Net;
 using System.Linq;
 using System.Threading;
 
-namespace OpenTracingDemo.Common.ServiceRegistry
+namespace JDSF.Common.ServiceRegistry
 {
     public class ConsulConfigClient : IConsulConfigClient
     {

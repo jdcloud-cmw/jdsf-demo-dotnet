@@ -22,4 +22,9 @@
   <ItemGroup>
     <ProjectReference Include="..\JDSF.Common\JDSF.Common.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="RequestSetOptionsStartupFilter.cs" />
+    <Compile Remove="TypedClient.cs" />
+    <Compile Remove="TypedClient.cs" />
+  </ItemGroup>
 </Project>

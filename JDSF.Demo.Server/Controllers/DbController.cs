@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace OpenTracingDemo.Server.Controllers
+namespace JDSF.Demo.Server.Controllers
 {
     public class DbController : Controller
     {

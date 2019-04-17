@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace OpenTracingDemo.Common.ServiceRegistry
+namespace JDSF.Common.ServiceRegistry
 {
     public class HealthServiceInfo
     {

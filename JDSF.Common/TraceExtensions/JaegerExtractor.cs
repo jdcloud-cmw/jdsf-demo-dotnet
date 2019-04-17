@@ -2,12 +2,12 @@
 using Jaeger.Propagation;
 using OpenTracing.Propagation;
 
-namespace OpenTracingDemo.Common.ServiceCollectionExtensions
+namespace JDSF.Common.TraceExtensions
 {
-    public class JaegerCodec<T>  
+    public class JaegerExtractor<T>
     {
         public IFormat<T> Format { get; set; }
 
-        public Codec<T> Codec { get; set; }
+        public Extractor<T> Extractor { get; set; }
     }
 }

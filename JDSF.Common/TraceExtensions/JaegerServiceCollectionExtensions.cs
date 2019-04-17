@@ -9,13 +9,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using OpenTracing;
 using OpenTracing.Contrib.NetCore.CoreFx;
-using OpenTracing.Util; 
+using OpenTracing.Util;
 
-namespace OpenTracingDemo.Common.ServiceCollectionExtensions
+namespace JDSF.Common.TraceExtensions
 {
     public static class JaegerServiceCollectionExtensions
     {
-        private static readonly string _jaegerUri =  "http://{0}/api/traces";
+       
 
         public static IServiceCollection AddJaeger(this IServiceCollection services,OpenTracingOptions openTracingOptions)
         {
@@ -143,7 +143,7 @@ namespace OpenTracingDemo.Common.ServiceCollectionExtensions
 
                 return tracer;
             });
-            Uri jaegerUri = new Uri(string.Format(_jaegerUri, "localhost:14268"));
+            Uri jaegerUri = new Uri(string.Format(ConstParam.JAEGER_URI, "localhost:14268"));
             // Prevent endless loops when OpenTracing is tracking HTTP requests to Jaeger.
 
             if(SenderType.HttpSender == openTracingOptions.SenderType && 
@@ -154,7 +154,7 @@ namespace OpenTracingDemo.Common.ServiceCollectionExtensions
                 if(openTracingOptions.HttpSenderPort != 80) {
                     senderUrlBuilder.Append(":").Append(openTracingOptions.HttpSenderPort.ToString());
                 }
-                jaegerUri = new Uri(String.Format(_jaegerUri, senderUrlBuilder.ToString()));
+                jaegerUri = new Uri(String.Format(ConstParam.JAEGER_URI, senderUrlBuilder.ToString()));
             }
             services.Configure<HttpHandlerDiagnosticOptions>(options =>
             {

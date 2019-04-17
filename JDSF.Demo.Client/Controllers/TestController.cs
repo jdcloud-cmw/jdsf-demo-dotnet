@@ -3,10 +3,10 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using OpenTracingDemo.Models;
-using OpenTracingDemo.Service;
+using JDSF.Demo.Client.Models;
+using JDSF.Demo.Client.Service;
 
-namespace OpenTracingDemo.Controllers
+namespace JDSF.Demo.Controllers
 {
     public class TestController: Controller
     {

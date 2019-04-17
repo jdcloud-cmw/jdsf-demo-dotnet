@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using OpenTracingDemo.Models;
+using JDSF.Demo.Client.Models;
 
-namespace OpenTracingDemo.Controllers
+namespace JDSF.Demo.Client.Controllers
 {
     public class HomeController : Controller
     {

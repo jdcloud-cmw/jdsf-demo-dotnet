@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Text;
 using Consul;
 
-namespace OpenTracingDemo.Common.ServiceRegistry
+namespace JDSF.Common.ServiceRegistry
 {
     public class ConsulServiceRegistry:IServiceRegistry
     {
@@ -31,6 +31,10 @@ namespace OpenTracingDemo.Common.ServiceRegistry
             agentServiceRegistration.Port = option.Port;
             agentServiceRegistration.Name = serviceName;
             agentServiceRegistration.ID = instanceId;
+            if(!string.IsNullOrWhiteSpace(option.Zone))
+            {
+                agentServiceRegistration.Meta.Add("zone", option.Zone);
+            }
             agentServiceRegistration.Check = new AgentServiceCheck { HTTP=$"http://{option.IpAddress}:{option.Port}{option.HealthCheckUrl}",Interval = TimeSpan.FromSeconds(10) };
             _ConsulClient.Agent.ServiceRegister(agentServiceRegistration);
         }

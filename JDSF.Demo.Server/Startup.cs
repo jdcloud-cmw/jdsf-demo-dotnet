@@ -10,10 +10,11 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OpenTracingDemo.Common.ServiceCollectionExtensions;
-using OpenTracingDemo.Common.ServiceRegistry;
+using JDSF.Common.TraceExtensions;
+using JDSF.Common.ServiceRegistry;
+using JDSF.Common;
 
-namespace OpenTracingDemo.Server
+namespace JDSF.Demo.Server
 {
     public class Startup
     {
@@ -33,22 +34,8 @@ namespace OpenTracingDemo.Server
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddJaeger(new OpenTracingOptions { Sampler = new ConstSampler(true), SenderType = SenderType.UDPSender });
             services.AddOpenTracing();
-
-            services.AddServiceRegistry(new ConsulConfigOption
-            {
-                ConsulHost = "10.12.209.43",
-                ConsulPort = 8500,
-                ConsulSchame = "http"
-            }, new DiscoverOption
-            {
-                ServiceName = "db-service",
-                IpAddress = "10.12.140.173",
-                Port = 5002,
-                InstanceId = "db-service-1",
-                PreferIpAddress = true
-            });
+            services.AddJDSF(Configuration);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

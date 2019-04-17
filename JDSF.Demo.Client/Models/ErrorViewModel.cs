@@ -1,6 +1,6 @@
 using System;
 
-namespace OpenTracingDemo.Models
+namespace JDSF.Demo.Client.Models
 {
     public class ErrorViewModel
     {

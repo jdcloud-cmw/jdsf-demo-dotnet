@@ -1,7 +1,7 @@
 using System;
-using Microsoft.Extensions.DependencyInjection; 
+using Microsoft.Extensions.DependencyInjection;
 
-namespace OpenTracingDemo.Common.ServiceRegistry
+namespace JDSF.Common.ServiceRegistry
 {
     public static class ServiceRegistryServiceCollectionExtensions
     {

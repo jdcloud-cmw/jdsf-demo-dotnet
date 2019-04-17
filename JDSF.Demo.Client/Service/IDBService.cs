@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using OpenTracingDemo.Models;
+using JDSF.Demo.Client.Models;
 using Refit;
 
-namespace OpenTracingDemo.Service
+namespace JDSF.Demo.Client.Service
 {
     public interface IDBService
     {
